@@ -32,15 +32,18 @@ app.post("/", function(req, res) {
             const weatherData = JSON.parse(data);
             const temp = weatherData.main.temp;
             const city = weatherData.name;
-            const humidity = main.humidity;
-            const windSpeed = wind.speed;
+            const humidity = weatherData.main.humidity;
+            const windSpeed = weatherData.wind.speed;
             const weatherDescription = weatherData.weather[0].description; 
             const icon = weatherData.weather[0].icon;
             const imageURL = "http://openweathermap.org/img/wn/" + icon + "@2x.png"; 
             
             // displays the output of the results
             res.write("<h1> The weather is " + weatherDescription + "<h1>");
-            res.write("<h2>The Temperature in " + city + " " + zip + " is " + temp + " Degrees Fahrenheit<h2>");
+            res.write("<h2> The Temperature in " + city + " is " + temp + "Degrees Fahrenheit" + "<h2>");
+            res.write("<h3>The Humidity is" + humidity + "<h3>");
+            res.write("<h4> The Wind Speed is " + windSpeed + "<h4>");
+            
           
             res.write("<img src=" + imageURL +">");
             res.send();
