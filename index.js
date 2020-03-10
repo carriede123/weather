@@ -35,8 +35,8 @@ app.post("/", function(req, res) {
         // gets individual items from Open Weather API
         response.on("data", function(data){
             const weatherData = JSON.parse(data);
-            //const temp = weatherData.main.temp;
-            //const windDirect = weatherData.wind.deg; 
+            const temp = weatherData.main.temp;
+            const windDirect = weatherData.wind.deg; 
             const windSpeed = weatherData.wind.speed;
             const minTemp = weatherData.main.temp_min;
             const maxTemp = weatherData.main.temp_max;
